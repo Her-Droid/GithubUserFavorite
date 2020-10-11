@@ -3,7 +3,6 @@ package com.russi.githubapi.database
 import android.net.Uri
 import android.provider.BaseColumns
 
-
 object GithubDatabase {
     const val AUTH = "com.russi.githubapi"
     const val SCHEME = "content"

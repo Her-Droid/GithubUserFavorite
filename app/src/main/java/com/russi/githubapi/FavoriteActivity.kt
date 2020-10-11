@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.HandlerThread
 import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
@@ -13,8 +12,6 @@ import com.russi.githubapi.adapter.ListFavoriteAdapter
 import com.russi.githubapi.database.GithubDatabase.FavoriteTable.Companion.USER_CONTENT_URI
 import com.russi.githubapi.helper.MapHelper
 import com.russi.githubapi.model.FavoriteModel
-import com.russi.githubapi.viewmodel.FavoriteViewModel
-import com.russi.githubapi.viewmodel.UserViewModel
 import kotlinx.android.synthetic.main.activity_favorite.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope

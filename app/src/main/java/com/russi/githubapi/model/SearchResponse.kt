@@ -78,3 +78,5 @@ data class ListUser(
     @SerializedName("organizations_url")
     val organizationsUrl: String = ""
 ) : Parcelable
+
+

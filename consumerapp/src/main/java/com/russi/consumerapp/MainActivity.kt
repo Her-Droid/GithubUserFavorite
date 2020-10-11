@@ -1,12 +1,9 @@
 package com.russi.consumerapp
 
-import android.content.Intent
 import android.database.ContentObserver
 import android.os.Bundle
 import android.os.Handler
 import android.os.HandlerThread
-import android.view.Menu
-import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -84,21 +81,6 @@ class MainActivity : AppCompatActivity() {
 
     private fun showMessage(string: String) {
         Snackbar.make(rv_user, string, Snackbar.LENGTH_SHORT).show()
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.menu_main, menu)
-        return super.onCreateOptionsMenu(menu)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            R.id.menu_setting -> {
-                val intent = Intent(this@MainActivity, SettingActivity::class.java)
-                startActivity(intent)
-            }
-        }
-        return super.onOptionsItemSelected(item)
     }
 
 }

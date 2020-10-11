@@ -28,6 +28,10 @@
     <string name="favorite_message">Cari dan tambahkan User Ke Favorite</string>
     <string name="onclik">delete dari favorite User</string>
     <string name="favorite_toast_detail">tambahkan ke list favorite</string>
+    <string name="toast_location">Lokasi tidak Ada</string>
+    <string name="toast_company">Company tidak Ada</string>
+    <string name="toast_username">Username tidak Ada</string>
+    <string name="toast_name">Nama tidak Ada</string>
 
 
 </resources>

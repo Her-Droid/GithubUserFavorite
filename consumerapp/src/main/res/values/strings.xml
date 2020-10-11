@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">GithubAPI</string>
+    <string name="app_name">GithubFavorite</string>
     <string name="find_user">Find Username</string>
     <string name="name_user">Russi Hersiano</string>
     <string name="username">username</string>

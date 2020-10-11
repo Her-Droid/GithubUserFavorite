@@ -68,25 +68,25 @@ class DetailActivity : AppCompatActivity(), View.OnClickListener {
             if(!response.location.isNullOrEmpty()) {
                 detail_location.text = response.location.toString()
             }else{
-                detail_location.text = "Lokasi tidak Ada"
+                detail_location.text = getString(R.string.toast_location)
             }
 
             if(!response.company.isNullOrEmpty()) {
                 detail_company.text = response.company.toString()
             }else{
-                detail_company.text = "Company tidak Ada"
+                detail_company.text = getString(R.string.toast_company)
             }
 
             if(!response.login.isNullOrEmpty()) {
                 username_detail.text = response.login.toString()
             }else{
-                username_detail.text = "Username tidak Ada"
+                username_detail.text = getString(R.string.toast_username)
             }
 
             if(!response.name.isNullOrEmpty()) {
                 detail_name.text = response.name.toString()
             }else{
-                detail_name.text = "Nama tidak Ada"
+                detail_name.text = getString(R.string.toast_name)
             }
 
             detail_follower.text = response.followers.toString()
