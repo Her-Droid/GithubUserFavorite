@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">GithubAPI</string>
+    <string name="find_user">Find Username</string>
+    <string name="name_user">Russi Hersiano</string>
+    <string name="username">username</string>
+    <string name="detail_names">Russi Hersiano</string>
+    <string name="repos">\@000</string>
+    <string name="repository">Repository</string>
+    <string name="followers">\@000</string>
+    <string name="follows">Followers</string>
+    <string name="following">\@000</string>
+    <string name="followng">Following</string>
+    <string name="hint_location">Location</string>
+    <string name="location">Location</string>
+    <string name="hint_company">Company</string>
+    <string name="company">Company</string>
+    <string name="image_splash">SplashImage</string>
+    <string name="github_user">Github User</string>
+    <string name="copyright">Created by: Russi Hersiano</string>
+    <string name="daily_reminder">"Alarm "</string>
+    <string name="reminder_setting">Reminder Setting</string>
+    <string name="favorite">FAVORITE USER</string>
+    <string name="empty_fav">Empty List Favorite</string>
+    <string name="setting">Setting</string>
+    <string name="alarm_setting">ALARM SETTING</string>
+    <string name="alarm">Alarm Sudah di Set</string>
+    <string name="alarm_cancel">Alarm Sudah Cancel</string>
+    <string name="favorite_message">Cari dan tambahkan User Ke Favorite</string>
+    <string name="empty">EmptyList User</string>
+
+
+</resources>
