@@ -1,4 +1,4 @@
-package com.russi.githubapi.database
+package com.russi.githubapi.provider
 
 import android.content.ContentProvider
 import android.content.ContentValues
@@ -6,10 +6,10 @@ import android.content.Context
 import android.content.UriMatcher
 import android.database.Cursor
 import android.net.Uri
+import com.russi.githubapi.database.FavoriteHelper
 import com.russi.githubapi.database.GithubDatabase.AUTH
 import com.russi.githubapi.database.GithubDatabase.FavoriteTable.Companion.USER_CONTENT_URI
 import com.russi.githubapi.database.GithubDatabase.FavoriteTable.Companion.USER_TABLE_NAME
-import com.russi.githubapi.model.FavoriteModel
 
 
 class FavoriteProvider : ContentProvider() {

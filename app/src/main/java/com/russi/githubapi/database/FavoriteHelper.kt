@@ -1,16 +1,14 @@
 package com.russi.githubapi.database
-
 import android.content.ContentValues
 import android.content.Context
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
-import com.russi.githubapi.database.GithubDatabase.FavoriteTable.Companion.FAVORITE
 import com.russi.githubapi.database.GithubDatabase.FavoriteTable.Companion.USERNAME
 import com.russi.githubapi.database.GithubDatabase.FavoriteTable.Companion.USER_TABLE_NAME
 import java.sql.SQLException
 
 class FavoriteHelper(context: Context) {
-    private lateinit var databaseHelper: DatabaseHelper
+    private var databaseHelper: DatabaseHelper = DatabaseHelper(context)
     private var database: SQLiteDatabase = databaseHelper.writableDatabase
 
     companion object {

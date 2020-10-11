@@ -6,7 +6,7 @@ import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
 
 class SplashActivity : AppCompatActivity() {
-    private val SPLASH_TIME_OUT: Long = 1000
+    private val timeOut: Long = 1000
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -15,6 +15,6 @@ class SplashActivity : AppCompatActivity() {
          Handler().postDelayed({
             startActivity(Intent(this, MainActivity::class.java))
             finish()
-        }, SPLASH_TIME_OUT)
+        }, timeOut)
     }
 }

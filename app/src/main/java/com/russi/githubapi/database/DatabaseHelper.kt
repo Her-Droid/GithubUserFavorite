@@ -21,12 +21,12 @@ internal class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATA
                 " ${GithubDatabase.FavoriteTable.FAVORITE} TEXT NOT NULL)"
     }
 
-    override fun onCreate(database: SQLiteDatabase?) {
-        database?.execSQL(SQL_TABLE)
+    override fun onCreate(database: SQLiteDatabase) {
+        database.execSQL(SQL_TABLE)
     }
 
-    override fun onUpgrade(database: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
-        database?.execSQL("DROP TABLE IF EXISTS $USER_TABLE_NAME")
+    override fun onUpgrade(database: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
+        database.execSQL("DROP TABLE IF EXISTS $USER_TABLE_NAME")
         onCreate(database)
     }
 }

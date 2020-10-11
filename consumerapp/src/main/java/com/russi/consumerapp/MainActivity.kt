@@ -21,7 +21,6 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 
-
 class MainActivity : AppCompatActivity() {
 
     private lateinit var listDataUserAdapter: ListFavoriteAdapter
@@ -33,6 +32,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        setActionBarTitle("Favorite")
         rv_user.layoutManager = LinearLayoutManager(this)
         rv_user.setHasFixedSize(true)
         listDataUserAdapter = ListFavoriteAdapter(this)
@@ -55,6 +55,12 @@ class MainActivity : AppCompatActivity() {
             if (list != null) {
                 listDataUserAdapter.listFavorite = list
             }
+        }
+    }
+
+    private fun setActionBarTitle(title: String) {
+        if (supportActionBar != null) {
+            supportActionBar!!.title = title
         }
     }
 

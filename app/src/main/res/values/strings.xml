@@ -26,6 +26,8 @@
     <string name="alarm">Alarm Sudah di Set</string>
     <string name="alarm_cancel">Alarm Sudah Cancel</string>
     <string name="favorite_message">Cari dan tambahkan User Ke Favorite</string>
+    <string name="onclik">delete dari favorite User</string>
+    <string name="favorite_toast_detail">tambahkan ke list favorite</string>
 
 
 </resources>

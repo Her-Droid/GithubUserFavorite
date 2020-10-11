@@ -22,6 +22,7 @@ class SettingActivity: AppCompatActivity(){
         setContentView(R.layout.activity_setting)
         val actionBar = supportActionBar
         actionBar?.setDisplayHomeAsUpEnabled(true)
+        title = getString(R.string.setting)
 
         alarmReceiver = AlarmReceiver()
         sharedPreferences = getSharedPreferences(PREFERENCE, Context.MODE_PRIVATE)

@@ -25,7 +25,7 @@
         <activity android:name=".SettingActivity"/>
         <provider
             android:authorities="com.russi.githubapi"
-            android:name=".database.FavoriteProvider"
+            android:name=".provider.FavoriteProvider"
             android:enabled="true"
             android:readPermission="com.russi.githubapi.READ_DATABASE"
             android:writePermission="com.russi.githubapi.WRITE_DATABASE"/>
