@@ -26,14 +26,14 @@ object MapHelper {
                     getString(getColumnIndexOrThrow(GithubDatabase.FavoriteTable.FAVORITE))
                 userList.add(
                     FavoriteModel(
-                        username,
-                        name,
-                        avatar,
-                        company,
-                        location,
-                        followers,
-                        following,
-                        favorite
+                        follower = followers.toString(),
+                        name = name,
+                        avatarUrl = avatar,
+                        company = company,
+                        location = location,
+                        following = following.toString(),
+                        login = username,
+                        favoriteUser = favorite
                     )
                 )
             }

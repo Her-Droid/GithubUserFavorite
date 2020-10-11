@@ -19,6 +19,7 @@ class DetailActivity : AppCompatActivity() {
     companion object {
         const val EXTRA_POSITION = "extra_position"
         const val EXTRA_NOTE = "extra_note"
+        const val EXTRA_DATA_FAVORITE = "extra_data_favorite"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,7 +32,7 @@ class DetailActivity : AppCompatActivity() {
     }
 
     fun getUsername(): String? {
-        val user = intent?.getParcelableExtra<FavoriteModel>(EXTRA_DATA)
+        val user = intent?.getParcelableExtra<FavoriteModel>(EXTRA_NOTE)
         return if(user?.username?.isNotEmpty()!!){
             user.username
         }else{
@@ -48,7 +49,7 @@ class DetailActivity : AppCompatActivity() {
         detail_follower.text = favoriteUser?.follower.toString()
         detail_following.text = favoriteUser?.following.toString()
         Glide.with(this)
-            .load(favoriteUser?.avatar.toString())
+            .load(favoriteUser?.avatarUrl.toString())
             .into(detail_image)
     }
 

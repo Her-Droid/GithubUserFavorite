@@ -6,28 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".FavoriteActivity">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/bar_favorite"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" >
-
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar_favorite"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            app:contentInsetStartWithNavigation="0dp"
-            app:contentInsetStart="0dp"
-            app:layout_scrollFlags="scroll|snap"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-    </com.google.android.material.appbar.AppBarLayout>
-
-
     <ProgressBar
         android:id="@+id/pb_favorite"
         style="?android:attr/progressBarStyle"
@@ -42,13 +20,11 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_favorite"
-        android:layout_width="411dp"
-        android:layout_height="651dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bar_favorite"
         tools:listitem="@layout/list_user" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

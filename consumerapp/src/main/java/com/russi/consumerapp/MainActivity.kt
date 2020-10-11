@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
         setActionBarTitle("Favorite")
         rv_user.layoutManager = LinearLayoutManager(this)
         rv_user.setHasFixedSize(true)
-        listDataUserAdapter = ListFavoriteAdapter(this)
+        listDataUserAdapter = ListFavoriteAdapter()
         rv_user.adapter = listDataUserAdapter
 
         val thread = HandlerThread("Observer")

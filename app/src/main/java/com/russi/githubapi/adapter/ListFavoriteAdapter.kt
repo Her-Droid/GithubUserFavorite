@@ -9,15 +9,14 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.russi.githubapi.DetailActivity
-import com.russi.githubapi.DetailActivity.Companion.EXTRA_DATA
-import com.russi.githubapi.FavoriteActivity
+import com.russi.githubapi.DetailActivity.Companion.EXTRA_DATA_FAVORITE
 import com.russi.githubapi.R
 import com.russi.githubapi.model.FavoriteModel
 import de.hdodenhof.circleimageview.CircleImageView
 import kotlinx.android.synthetic.main.list_user.view.*
 
 
-class ListFavoriteAdapter(favoriteActivity: FavoriteActivity) : RecyclerView.Adapter<ListFavoriteAdapter.ViewHolder>() {
+class ListFavoriteAdapter : RecyclerView.Adapter<ListFavoriteAdapter.ViewHolder>() {
 
     var listFavorite = mutableListOf<FavoriteModel>()
         set(value) {
@@ -49,11 +48,8 @@ class ListFavoriteAdapter(favoriteActivity: FavoriteActivity) : RecyclerView.Ada
         holder.nameUser.text = dataFavorite.login
         holder.itemView.setOnClickListener {
             val intent = Intent(holder.context, DetailActivity::class.java)
-            intent.putExtra(EXTRA_DATA, dataFavorite)
+            intent.putExtra(EXTRA_DATA_FAVORITE, dataFavorite)
             holder.context.startActivity(intent)
         }
     }
 }
-
-
-
