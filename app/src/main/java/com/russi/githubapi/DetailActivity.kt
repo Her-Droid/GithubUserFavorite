@@ -45,7 +45,6 @@ class DetailActivity : AppCompatActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
-        setActionBarTitle("Detail")
 
         favoriteHelper = FavoriteHelper.getInstance(applicationContext)
         favoriteHelper.open()
@@ -123,7 +122,6 @@ class DetailActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun setDataFavorite() {
         val favoriteUser = intent.getParcelableExtra<FavoriteModel>(EXTRA_NOTE)
-        setActionBarTitle("Detail of " + favoriteUser?.name.toString())
         detail_name.text = favoriteUser?.name.toString()
         username_detail.text = favoriteUser?.username.toString()
         detail_company.text = favoriteUser?.company.toString()
