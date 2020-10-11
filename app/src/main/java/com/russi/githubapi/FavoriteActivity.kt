@@ -4,8 +4,8 @@ import android.database.ContentObserver
 import android.os.Bundle
 import android.os.Handler
 import android.os.HandlerThread
-import android.os.PersistableBundle
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
@@ -13,6 +13,7 @@ import com.russi.githubapi.adapter.ListFavoriteAdapter
 import com.russi.githubapi.database.GithubDatabase.FavoriteTable.Companion.USER_CONTENT_URI
 import com.russi.githubapi.helper.MapHelper
 import com.russi.githubapi.model.FavoriteModel
+import com.russi.githubapi.viewmodel.FavoriteViewModel
 import kotlinx.android.synthetic.main.activity_favorite.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -21,14 +22,16 @@ import kotlinx.coroutines.launch
 
 class FavoriteActivity : AppCompatActivity() {
     private lateinit var listFavoriteAdapter: ListFavoriteAdapter
+    private lateinit var favoriteViewModel: FavoriteViewModel
     companion object{
         private const val EXTRA_DATA = "EXTRA_DATA"
     }
 
-    override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
-        super.onCreate(savedInstanceState, persistentState)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_favorite)
         setActionBar()
+        showLoading()
 
         rv_favorite.layoutManager = LinearLayoutManager(this)
         rv_favorite.setHasFixedSize(true)
@@ -56,13 +59,11 @@ class FavoriteActivity : AppCompatActivity() {
 
     private fun showSelectedUser() {
         GlobalScope.launch(Dispatchers.Main) {
-            pb_favorite.visibility = View.VISIBLE
             val noteAsync  = async(Dispatchers.IO){
                 val cursor = contentResolver.query(USER_CONTENT_URI, null,null,null,null)
                 MapHelper.mapCursorToArrayList(cursor)
             }
             val dataFavorite = noteAsync.await()
-            pb_favorite.visibility = View.INVISIBLE
             if (dataFavorite.size > 0 ){
                 listFavoriteAdapter.listFavorite =  dataFavorite
             }else{
@@ -70,6 +71,18 @@ class FavoriteActivity : AppCompatActivity() {
                 showMessage()
             }
         }
+    }
+    private fun showLoading() {
+        favoriteViewModel.loading.observe(this, { state ->
+            if (state) {
+                pb_favorite.visibility = View.VISIBLE
+            } else {
+                pb_favorite.visibility = View.INVISIBLE
+            }
+        })
+        favoriteViewModel.message.observe(this, { message ->
+            Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+        })
     }
 
     private fun showMessage() {

@@ -8,19 +8,19 @@ import kotlinx.android.parcel.Parcelize
 data class FavoriteModel(
 
     @SerializedName("follower")
-    val follower: String = "",
+    var follower: String = "",
 
     @SerializedName("following")
-    val following: String = "",
+    var following: String = "",
 
     @SerializedName("name")
     var name: String = "",
 
     @SerializedName("company")
-    val company: String = "",
+    var company: String = "",
 
     @SerializedName("location")
-    val location: String = "",
+    var location: String = "",
 
     @SerializedName("avatar")
     var avatar: Int = 0,
@@ -29,7 +29,7 @@ data class FavoriteModel(
     val repository: Int = 0,
 
     @SerializedName("username")
-    val username: String = "",
+    var username: String = "",
 
     @SerializedName("login")
     var login: String = "",

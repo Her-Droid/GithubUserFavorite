@@ -1,8 +1,10 @@
 package com.russi.githubapi
 
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import com.russi.githubapi.alarm.AlarmReceiver
 import kotlinx.android.synthetic.main.activity_setting.*
@@ -42,6 +44,16 @@ class SettingActivity: AppCompatActivity(){
         val editorInfo = sharedPreferences.edit()
         editorInfo.putBoolean(ALARM, value)
         editorInfo.apply()
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId){
+            R.id.menu_setting -> {
+                val intent = Intent(this@SettingActivity, MainActivity::class.java)
+                startActivity(intent)
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     private fun setSwitch() {

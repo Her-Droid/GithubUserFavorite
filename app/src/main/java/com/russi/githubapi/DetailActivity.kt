@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.russi.githubapi.adapter.ViewPagerDetailAdapter
 import com.russi.githubapi.database.FavoriteHelper
+import com.russi.githubapi.database.GithubDatabase
 import com.russi.githubapi.database.GithubDatabase.FavoriteTable.Companion.AVATAR
 import com.russi.githubapi.database.GithubDatabase.FavoriteTable.Companion.COMPANY
 import com.russi.githubapi.database.GithubDatabase.FavoriteTable.Companion.FAVORITE
@@ -35,11 +36,13 @@ class DetailActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var favoriteHelper: FavoriteHelper
     private var favoriteModel: FavoriteModel? = null
     private var favorite = false
+    private var position: Int = 0
     private lateinit var imageAvatar: String
     companion object {
         const val EXTRA_DATA = "extra_data"
         const val EXTRA_FAVORITE = "extra_data"
         const val EXTRA_NOTE = "extra_note"
+        const val EXTRA_POSITION = "extra_position"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -48,6 +51,15 @@ class DetailActivity : AppCompatActivity(), View.OnClickListener {
 
         favoriteHelper = FavoriteHelper.getInstance(applicationContext)
         favoriteHelper.open()
+
+
+        favoriteModel= intent.getParcelableExtra(EXTRA_NOTE)
+        if (favoriteModel != null) {
+            position = intent.getIntExtra(EXTRA_POSITION, 0)
+            favorite = true
+        } else {
+            favoriteModel = FavoriteModel()
+        }
 
         favoriteModel = intent.getParcelableExtra(EXTRA_NOTE)
         if (favoriteModel != null){
@@ -70,7 +82,6 @@ class DetailActivity : AppCompatActivity(), View.OnClickListener {
                 detailUser.getDetailUser(user.login)
             }
         }
-        val dataUser = intent.getParcelableExtra<DataUser>(EXTRA_DATA)
         detailUser.dataDetailUser.observe(this, Observer { response ->
             if(!response.location.isNullOrEmpty()) {
                 detail_location.text = response.location.toString()
@@ -146,7 +157,6 @@ class DetailActivity : AppCompatActivity(), View.OnClickListener {
         val viewPagerDetailAdapter = ViewPagerDetailAdapter(this, supportFragmentManager)
         view_pager.adapter = viewPagerDetailAdapter
         tab_layout.setupWithViewPager(view_pager)
-        supportActionBar?.elevation = 0f
     }
 
     override fun onDestroy() {
@@ -155,7 +165,6 @@ class DetailActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     override fun onClick(view: View?) {
-        val favoriteUser = intent.getParcelableExtra<FavoriteModel>(EXTRA_NOTE)
         val checked: Int = R.drawable.ic_baseline_favorite_24
         val unChecked: Int = R.drawable.ic_baseline_favorite_border_24
         if (view?.id == R.id.btn_favorite) {
@@ -166,23 +175,30 @@ class DetailActivity : AppCompatActivity(), View.OnClickListener {
                 favorite = false
             } else {
                 val dataUsername = username_detail.text.toString()
-                val dataName = detail_name.text.toString()
-                val imgUser: String = view.detail_image.toString()
-                val dataCompany = detail_company.text.toString()
-                val dataLocation = detail_location.text.toString()
-                val dataFollowers = detail_follower.text.toString()
-                val dataFollowing = detail_following.text.toString()
+                val dataName = detail_name.text.toString().trim()
+                val dataAvatar = favoriteModel?.avatarUrl
+                val dataCompany = detail_company.text.toString().trim()
+                val dataLocation = detail_location.text.toString().trim()
+                val dataFollowers = detail_follower.text.toString().trim()
+                val dataFollowing = detail_following.text.toString().trim()
                 val dataFavorite = "1"
 
+                favoriteModel?.username = dataUsername
+                favoriteModel?.company = dataCompany
+                favoriteModel?.location = dataLocation
+                favoriteModel?.follower = dataFollowers
+                favoriteModel?.following = dataFollowing
+                favoriteModel?.favoriteUser = dataFavorite
+
                 val values = ContentValues()
-                values.put(USERNAME, dataUsername)
-                values.put(NAME, dataName)
-                values.put(AVATAR, imgUser)
-                values.put(COMPANY, dataCompany)
-                values.put(LOCATION, dataLocation)
-                values.put(FOLLOWERS, dataFollowers)
-                values.put(FOLLOWING, dataFollowing)
-                values.put(FAVORITE, dataFavorite)
+                values.put(GithubDatabase.FavoriteTable.USERNAME, dataUsername)
+                values.put(GithubDatabase.FavoriteTable.NAME, dataName)
+                values.put(GithubDatabase.FavoriteTable.AVATAR, dataAvatar)
+                values.put(GithubDatabase.FavoriteTable.COMPANY, dataCompany)
+                values.put(GithubDatabase.FavoriteTable.LOCATION, dataLocation)
+                values.put(GithubDatabase.FavoriteTable.FOLLOWERS, dataFollowers)
+                values.put(GithubDatabase.FavoriteTable.FOLLOWING, dataFollowing)
+                values.put(GithubDatabase.FavoriteTable.FAVORITE, dataFavorite)
 
                 favorite = true
                 contentResolver.insert(USER_CONTENT_URI, values)
@@ -191,10 +207,4 @@ class DetailActivity : AppCompatActivity(), View.OnClickListener {
             }
         }
     }
-    private fun setActionBarTitle(title: String) {
-        if (supportActionBar != null) {
-            supportActionBar!!.title = title
-        }
-    }
-
 }

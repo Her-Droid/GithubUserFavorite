@@ -21,7 +21,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity"/>
-        <activity android:name=".DetailActivity"/>
+        <activity android:name=".DetailActivity"
+            android:theme="@style/DetailActivity">
+
+        </activity>
         <activity android:name=".SettingActivity"/>
         <provider
             android:authorities="com.russi.githubapi"
@@ -29,7 +32,9 @@
             android:enabled="true"
             android:readPermission="com.russi.githubapi.READ_DATABASE"
             android:writePermission="com.russi.githubapi.WRITE_DATABASE"/>
-        <activity android:name=".FavoriteActivity"/>
+        <activity android:name=".FavoriteActivity"
+            android:theme="@style/DetailActivity">
+        </activity>
         <activity android:name=".SplashActivity"
             android:theme="@style/SplashScreenStyle">
             <intent-filter>

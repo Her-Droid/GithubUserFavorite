@@ -6,7 +6,9 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
+    <style name="DetailActivity" parent="Theme.AppCompat.Light.NoActionBar">
 
+    </style>
     <style name="SplashScreenStyle" parent="Theme.AppCompat.NoActionBar">
 
     </style>
