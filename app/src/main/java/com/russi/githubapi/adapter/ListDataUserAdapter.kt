@@ -15,7 +15,6 @@ import com.russi.githubapi.model.DataUser
 import de.hdodenhof.circleimageview.CircleImageView
 import kotlinx.android.synthetic.main.list_user.view.*
 
-
 class ListDataUserAdapter :
     RecyclerView.Adapter<ListDataUserAdapter.ViewHolder>() {
 

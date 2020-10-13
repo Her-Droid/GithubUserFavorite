@@ -30,6 +30,7 @@
             android:authorities="com.russi.githubapi"
             android:name=".provider.FavoriteProvider"
             android:enabled="true"
+            android:exported="true"
             android:readPermission="com.russi.githubapi.READ_DATABASE"
             android:writePermission="com.russi.githubapi.WRITE_DATABASE"/>
         <activity android:name=".FavoriteActivity"

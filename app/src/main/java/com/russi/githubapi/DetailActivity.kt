@@ -61,6 +61,9 @@ class DetailActivity : AppCompatActivity(), View.OnClickListener {
 
         viewPagerConfig()
         btn_favorite.setOnClickListener(this)
+        detailUser.loading.observe(this,{isLoading ->
+            btn_favorite.isEnabled = !isLoading
+        })
 
 
         detailUser.dataDetailUser.observe(this, Observer { response ->
